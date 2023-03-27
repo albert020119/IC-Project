@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Electron Textbox Example</title>
+    <link rel="stylesheet" href="styles.css">
+
+  </head>
+  <body style="background-image: url('https://i.ibb.co/qkHL5fX/poza3.jpg');">
+    <div for="CheatDiv">
+      <label for="CheatName">Cheat Name</label>
+    </div>
+    <div class="process">
+      <label for="processAttach">ATTACH TO PROCESS</label>
+      <input class="checkboxProcess" type="checkbox" id="my-checkbox">
+    </div> 
+    <div>
+      <label for="slider">Aimbot:</label>
+      <input type="checkbox">
+      <input type="range" id="slider" name="slider" min="0" max="100" value="50">
+    </div>
+    <div>
+      <label for="wallhack">Wallhack:</label>
+      <input type="checkbox"  >
+    </div>
+    <div>
+      <label for="radar">Radar:</label>
+      <input type="checkbox">
+    </div>
+    <div>
+      <label for="antiflash">Antiflash:</label>
+      <input type="checkbox">
+    </div>
+    <div>
+      <label for="trigger">Trigger:</label>
+      <input type="checkbox">
+    </div>
+         <script src="./renderer.js"></script>
+  </body>
+</html>

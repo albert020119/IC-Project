@@ -1,0 +1,65 @@
+/* styles.css */
+label[for=CheatName] {
+  font-size:40px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  color:greenyellow;
+}
+label[for=processAttach] {
+  font-weight: bold;
+}
+
+div{
+  margin-top: 10px;
+}
+
+div[for=CheatDiv] {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+ body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 20px;
+    background-position: center;
+    background-size:70%;
+  }
+  label {
+    display: inline-block;
+    width: 100px;
+    margin-right: 10px;
+    color:white;
+  }
+  input[type="text"] {
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+  input[type="checkbox"] {
+    margin-right: 10px;
+    vertical-align: middle;
+
+  }
+  input[type="checkbox"]:checked {
+    background-color: green;
+  }
+label {
+  font-size: 24px;
+}
+.process{
+  text-align: justify;
+}
+.process{
+  margin-bottom: 50px;
+}
+.checkboxProcess {
+  transform: scale(3);
+  vertical-align: middle;
+    position: absolute;
+    left: 200px;
+    top:35%;
+  
+}
