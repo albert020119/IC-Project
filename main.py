@@ -1,6 +1,7 @@
 import logging
 import pymem
 from tkinter import *
+from functions import antiflash, bunny
 
 CSGO_PROCESS_NAME = "csgo.exe"
 
@@ -20,6 +21,18 @@ class Cheat:
     def serve(self):
         self.logger.info("Starting to serve")
         # implementation
+    
+    def start_no_flash(self):
+        thread = antiflash.AntiFlash()
+        client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
+        thread.run(self.process, client)
+        
+    def start_bunny(self):
+        thread = bunny.Bunny()
+        client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
+        thread.run(self.process, client)
+
+
 
 def build_window():
     window = Tk()
@@ -49,9 +62,9 @@ def build_window():
 
 
 def main():
-    build_window()
     cheat = Cheat()
     cheat.connect_to_process(CSGO_PROCESS_NAME)
+    cheat.start_bunny()
     
 
 if __name__ == "__main__":

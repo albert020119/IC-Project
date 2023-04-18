@@ -1,4 +1,4 @@
-import memory
+import utils.memory as memory
 
 try:
     dwGlowObjectManager =  memory.get_sig('client.dll', rb'\xA1....\xA8\x01\x75\x4B', 4, 1)
