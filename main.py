@@ -1,7 +1,7 @@
 import logging
 import pymem
 from tkinter import *
-from functions import antiflash, bunny
+from functions import antiflash, bunny,wall
 
 CSGO_PROCESS_NAME = "csgo.exe"
 
@@ -32,7 +32,10 @@ class Cheat:
         client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
         thread.run(self.process, client)
 
-
+    def start_wall(self):
+        thread = wall.Wall()
+        client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
+        thread.run(self.process, client)
 
 def build_window():
     window = Tk()
@@ -64,7 +67,7 @@ def build_window():
 def main():
     cheat = Cheat()
     cheat.connect_to_process(CSGO_PROCESS_NAME)
-    cheat.start_bunny()
+    cheat.start_wall()
     
 
 if __name__ == "__main__":

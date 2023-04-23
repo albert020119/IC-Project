@@ -1,5 +1,5 @@
 """ here we enumerate the functionalities of the bot such as aimbot, wallhack, strafe, bunnyhop """
-from csgoCheat.Offsets import *
+from Offsets import *
 import time
 from MatFunctions.MathPy import *
 
