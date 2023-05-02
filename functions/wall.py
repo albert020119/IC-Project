@@ -6,6 +6,8 @@ from Offsets import *
 m_iGlowIndex = 0x10488
 dwGlowObjectManager = 87403120
 
+# crazy idea: replace map with a spoofed version that has no walls :D 
+
 class Wall (Thread):
         def run(self,pm,client):
             while True:
