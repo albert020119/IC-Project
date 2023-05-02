@@ -24,17 +24,20 @@ checkboxAim.addEventListener('change', (event) => {
 });
 checkboxWall.addEventListener('change', (event) => {
   if (event.target.checked) {
-    ipcRenderer.send('run-python-script');
+    ipcRenderer.send('run-python-script-Wall');
+  }
+  else {
+    ipcRenderer.send('kill-python-script-Wall');
   }
 });
-checkboxRadar.addEventListener('change', (event) => {
+checkboxBunny.addEventListener('change', (event) => {
   if (event.target.checked) {
-    ipcRenderer.send('run-python-script');
+    ipcRenderer.send('run-python-script-Bunny');
   }
 });
 checkboxAntiflash.addEventListener('change', (event) => {
   if (event.target.checked) {
-    ipcRenderer.send('run-python-script');
+    ipcRenderer.send('run-python-script-Antiflash');
   }
 });
 checkboxTrigger.addEventListener('change', (event) => {
