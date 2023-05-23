@@ -7,6 +7,9 @@ import utils.Offsets as Offsets
 local_player = Offsets.dwLocalPlayer
 flash_offset = Offsets.m_flFlashMaxAlpha
 
+#overrides flashed value of player
+#another more elegant solution, replace flashed animation with something blankd :D 
+
 class AntiFlash(Thread):
     def run(self, pm, client):
         while True:
