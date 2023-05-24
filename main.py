@@ -1,6 +1,6 @@
 import logging
 import pymem
-from functions import antiflash, bunny,wall
+from functions import antiflash, bunny, wall, aim
 
 CSGO_PROCESS_NAME = "csgo.exe"
 
@@ -36,11 +36,15 @@ class Cheat:
         client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
         thread.run(self.process, client)
 
+    def start_aim(self):
+        thread = aim.Aim()
+        client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
+        thread.run(self.process, client)
 
 def main():
     cheat = Cheat()
     cheat.connect_to_process(CSGO_PROCESS_NAME)
-    cheat.start_wall()
+    cheat.start_aim()
     
 
 if __name__ == "__main__":
