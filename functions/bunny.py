@@ -4,9 +4,8 @@ import keyboard
 from threading import *
 import utils.Offsets as Offsets
 import win32gui
-import win32api
 import win32process
-import win32con
+import win32api
 import time
 
 

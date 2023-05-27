@@ -4,11 +4,13 @@ from PIL import ImageTk, Image
 from utils import config                                                                       
 from main import Cheat
 
+
+
 def build_ui():
 
     root = tk.Tk()
     root.title("Checkbox Example")
-
+    cheat = Cheat(config.CSGO_PROCESS_NAME)
     window_width = 300
     window_height = 400
     screen_width = root.winfo_screenwidth()
@@ -45,7 +47,7 @@ def build_ui():
 
     def check_checkbox_status():
         try:
-            cheat = Cheat(config.CSGO_PROCESS_NAME)
+
             print("jocul e pornit")
 
             for i, var in enumerate(check_vars):
@@ -54,6 +56,7 @@ def build_ui():
                     if checkbox_text == "Trigger" and not cheat.TRIGGER_ON:
                         cheat.TRIGGER_ON = True
                         cheat.start_trigger()
+                        print(cheat.TRIGGER_ON)
                     if checkbox_text == "Wall" and not cheat.WALL_ON:
                         cheat.WALL_ON = True
                         cheat.start_wall()
@@ -66,8 +69,14 @@ def build_ui():
                     if checkbox_text == "Anti Flash" and not cheat.NFLASH_ON:
                         cheat.NFLASH_ON = True
                         cheat.start_no_flash()      
-                else:
+                elif var.get()==0:
                     checkbox_text = checkboxes[i].cget("text")  # Get the text associated with the checkbox
+                    #print(checkbox_text)
+                    if checkbox_text == "Trigger" and cheat.TRIGGER_ON == True:
+                        cheat.TRIGGER_ON = False
+                        cheat.terminate_thread('trigger')
+                        print(cheat.TRIGGER_ON)
+                    
         except Exception as e: 
             print(e)
         root.after(1000, check_checkbox_status)  

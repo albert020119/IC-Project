@@ -11,13 +11,18 @@ flash_offset = Offsets.m_flFlashMaxAlpha
 #another more elegant solution, replace flashed animation with something blankd :D 
 
 class AntiFlash(Thread):
-    def run(self, pm, client):
+    def __init__(self,pm,client):
+        super().__init__()
+        self.pm = pm 
+        self.client = client
+
+    def run(self):
         while True:
-            player = pm.read_int(client + local_player)
+            player = self.pm.read_int(self.client + local_player)
             if player:
                 flash_value = player + flash_offset
                 if flash_value:
-                    pm.write_float(flash_value, float(0))
+                    self.pm.write_float(flash_value, float(0))
             time.sleep(0.01)
 
 

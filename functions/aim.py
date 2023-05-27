@@ -2,10 +2,9 @@ import keyboard
 import pymem
 import pymem.process
 import time
-from win32gui import GetWindowText, GetForegroundWindow
 from threading import *
 import utils.Offsets as Offsets
-
+from multiprocessing import Process
 
 trigger_key = "n"
 
@@ -23,7 +22,6 @@ class Aim(Thread):
                 time.sleep(0.1)
 
             if keyboard.is_pressed(trigger_key):
-                print("pressed")
                 player = self.pm.read_int(self.client + Offsets.dwLocalPlayer)
                 entity_id = self.pm.read_int(player + Offsets.m_iCrosshairId)
                 entity = self.pm.read_int(self.client + Offsets.dwEntityList + (entity_id - 1) * 0x10)
