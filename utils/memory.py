@@ -9,7 +9,6 @@ try:
     engine_dll = process.module_from_name(game_handle.process_handle, 'engine.dll').lpBaseOfDll
 except exception.ProcessNotFound as err:
     print(f'Failed to open a handle!')
-    os._exit(0)
 
 @dataclass
 class Memory:
