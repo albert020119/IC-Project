@@ -49,7 +49,7 @@ def build_ui():
         try:
 
             print("jocul e pornit")
-
+    
             for i, var in enumerate(check_vars):
                 if var.get() == 1:
                     checkbox_text = checkboxes[i].cget("text")  # Get the text associated with the checkbox

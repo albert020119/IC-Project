@@ -1,7 +1,7 @@
 import pymem.process
 import time
 from threading import *
-import utils.Offsets as Offsets
+import Offsets as Offsets
 
 
 local_player = Offsets.dwLocalPlayer
