@@ -3,11 +3,11 @@ import pymem
 import pymem.process
 import time
 from threading import *
-import Offsets as Offsets
+from functions.Offsets import Offsets 
 from multiprocessing import Process, Event
+from utils import config
 
-
-trigger_key = "n"
+trigger_key = config.key
 
 
 class Aim(Thread):

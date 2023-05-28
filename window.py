@@ -3,7 +3,7 @@ from tkinter import *
 from PIL import ImageTk, Image
 from utils import config                                                                       
 from main import Cheat
-
+import customtkinter
 
 
 def build_ui():
@@ -11,8 +11,8 @@ def build_ui():
     root = tk.Tk()
     root.title("Checkbox Example")
     cheat = Cheat(config.CSGO_PROCESS_NAME)
-    window_width = 300
-    window_height = 400
+    window_width = 400
+    window_height = 500
     screen_width = root.winfo_screenwidth()
     screen_height = root.winfo_screenheight()
     x_coordinate = int((screen_width / 2) - (window_width / 2))
@@ -21,8 +21,8 @@ def build_ui():
 
     root.resizable(False, False)
 
-
-    background_image = Image.open("hacker.jpg")
+    
+    background_image = Image.open("backgroundWindow.jpg")
     background_image = background_image.resize((window_width, window_height), Image.ANTIALIAS)
     background_image = ImageTk.PhotoImage(background_image)
 
@@ -31,7 +31,25 @@ def build_ui():
     background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
     root.configure(bg="#383e56")
+    def clickedSettingsButton():
+        new_window = tk.Toplevel(root)
+        new_window.title("Custom Window")
+        
+        input_label = tk.Label(new_window, text="Enter a value:")
+        input_label.pack()
 
+        input_entry = tk.Entry(new_window)
+        input_entry.pack()
+
+        def submit_value():
+            value = input_entry.get()
+            print("Submitted value:", value)
+
+        submit_button = tk.Button(new_window, text="Submit", command=submit_value)
+        submit_button.pack()
+    
+    
+    
     options = ["Trigger", "Wall", "Radar", "Bunny", "Anti Flash"]
     check_vars = []
     checkboxes = []  # Store references to the checkboxes
@@ -39,10 +57,12 @@ def build_ui():
     for index, option in enumerate(options):
         var = tk.IntVar()
         check_vars.append(var)
-        checkbox = tk.Checkbutton(root, text=option, variable=var, font=("Arial", 12))
+        """     checkbox = tk.Checkbutton(root, text=option, variable=var, font=("Arial", 12))
         checkbox.configure(bg="#383e56", fg="white", activebackground="#383e56", selectcolor="#70c1b3")
-        checkbox.grid(row=index, column=0, padx=10, pady=5, sticky="w")
-
+        #checkbox.grid(row=index, column=0, padx=10, pady=5, sticky="w")
+        checkbox.pack(padx=10, pady=5, anchor="w")"""
+        checkbox = customtkinter.CTkCheckBox(master=root,text=option,variable=var,onvalue=1,offvalue=0)
+        checkbox.pack(padx=5,pady=10,anchor='center')
         checkboxes.append(checkbox)  # Add checkbox reference to the list
 
     def check_checkbox_status():
@@ -98,7 +118,11 @@ def build_ui():
         root.after(1000, check_checkbox_status)  
 
     check_checkbox_status()  
+    add_settings_image = ImageTk.PhotoImage(Image.open("settings.png").resize((30,30), Image.ANTIALIAS))
 
+
+    settingsButton = customtkinter.CTkButton(master=root,image=add_settings_image,text="Trigger Key",width=100,height=40,compound="left",command=clickedSettingsButton)
+    settingsButton.pack(pady=70,padx=10)
     root.grid_rowconfigure(len(options), weight=1)
     root.grid_columnconfigure(0, weight=1)
 

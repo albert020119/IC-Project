@@ -2,7 +2,7 @@ import pymem.process
 import time
 import keyboard
 from threading import *
-import utils.Offsets as Offsets
+from functions.Offsets import Offsets 
 import time
 import re
 

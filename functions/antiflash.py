@@ -1,8 +1,7 @@
 import pymem.process
 import time
 from threading import *
-import Offsets as Offsets
-
+from functions.Offsets import Offsets
 
 local_player = Offsets.dwLocalPlayer
 flash_offset = Offsets.m_flFlashMaxAlpha
