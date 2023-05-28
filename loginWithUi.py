@@ -8,7 +8,7 @@ from google.cloud import exceptions
 import subprocess
 import window
 import registerWithUi
-
+from utils.Utils import calculate_md5_hash
 
 def run(): 
     db = firestore.client()
@@ -30,7 +30,7 @@ def run():
             account = result[0].to_dict()
 
             # Check if the entered password matches the password in the account document
-            if account['password'] == password:
+            if account['password'] == calculate_md5_hash(password):
                 root.destroy()
                 window.build_ui()
             else:

@@ -7,6 +7,7 @@ from firebase_admin import firestore
 from google.cloud import exceptions
 import subprocess
 import loginWithUi
+from utils.Utils import calculate_md5_hash
 
 def run():
     db = firestore.client()
@@ -22,7 +23,7 @@ def run():
             # Set the data for the document
             doc_ref.create({
                 'email': email,
-                'password': password
+                'password': calculate_md5_hash(password)
             })
             messagebox.showinfo("Registration Successful", "User registered successfully.")
         except Exception as e:
