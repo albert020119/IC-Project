@@ -3,21 +3,22 @@ import pymem
 import pymem.process
 import time
 from threading import *
-import utils.Offsets as Offsets
-from multiprocessing import Process
+import Offsets as Offsets
+from multiprocessing import Process, Event
+
 
 trigger_key = "n"
 
 
 class Aim(Thread):
-    def __init__(self,pm,client):
+    def __init__(self, pm, client, stop_event):
         super().__init__()
-        self.pm = pm 
+        self.pm = pm
         self.client = client
-
+        self.stop_event = stop_event
 
     def run(self):
-        while True:
+        while not self.stop_event.is_set():
             if not keyboard.is_pressed(trigger_key):
                 time.sleep(0.1)
 

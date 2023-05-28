@@ -9,13 +9,14 @@ dwGlowObjectManager = 87398792
 # crazy idea: replace map with a spoofed version that has no walls :D 
 
 class Wall (Thread):
-    def __init__(self,pm,client):
+    def __init__(self,pm,client,stop_event):
         super().__init__()
         self.pm = pm 
         self.client = client
+        self.stop_event = stop_event
 
     def run(self):
-        while True:
+        while not self.stop_event.is_set():
             glow_manager = self.pm.read_int(self.client + dwGlowObjectManager)
             #print(glow_manager)
             for i in range(1, 32):  # Entities 1-32 are reserved for players.

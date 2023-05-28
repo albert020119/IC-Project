@@ -3,6 +3,7 @@ from functions import antiflash, bunny, wall, aim, radar
 import pymem 
 import signal
 import threading
+from multiprocessing import Process, Event
 
 class Cheat:
     TRIGGER_ON = False
@@ -26,36 +27,40 @@ class Cheat:
 
     def terminate_thread(self,string) :
         print(self.thread_dict[string])
-        self.thread_dict[string].join()
+        self.thread_dict[string].set()
 
     def start_no_flash(self):
         client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
-        thread = antiflash.AntiFlash(self.process,client)
-        self.thread_dict['antiflash']=thread
+        stop_event = Event()
+        thread = antiflash.AntiFlash(self.process,client, stop_event)
+        self.thread_dict['antiflash']=stop_event
         thread.start()
         
     def start_bunny(self):
         client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
-        thread = bunny.Bunny(self.process, client)
-        self.thread_dict['bunny']=thread
+        stop_event = Event()
+        thread = bunny.Bunny(self.process, client, stop_event)
+        self.thread_dict['bunny']=stop_event
         thread.start()
 
     def start_wall(self):
         client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
-        thread = wall.Wall(self.process, client)
-        self.thread_dict['wall']=thread
+        stop_event = Event()
+        thread = wall.Wall(self.process, client, stop_event)
+        self.thread_dict['wall']=stop_event
         thread.start()
 
     def start_trigger(self):
         client = pymem.process.module_from_name(self.process.process_handle, "client.dll").lpBaseOfDll
-        thread = aim.Aim(self.process, client)
-        self.thread_dict['trigger']=thread
-        print(thread)
+        stop_event = Event()
+        thread = aim.Aim(self.process, client, stop_event)
+        self.thread_dict['trigger']=stop_event
         thread.start()
 
     def start_radar(self):
         client = pymem.process.module_from_name(self.process.process_handle, "client.dll")
-        thread = radar.Radar(self.process, client)
-        self.thread_dict['radar']=thread
+        stop_event = Event()
+        thread = radar.Radar(self.process, client, stop_event)
+        self.thread_dict['radar']=stop_event
         thread.start()
 

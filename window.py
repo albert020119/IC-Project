@@ -76,6 +76,22 @@ def build_ui():
                         cheat.TRIGGER_ON = False
                         cheat.terminate_thread('trigger')
                         print(cheat.TRIGGER_ON)
+                    if checkbox_text == "Wall" and cheat.WALL_ON == True:
+                        cheat.WALL_ON = False
+                        cheat.terminate_thread('wall')
+                        print(cheat.TRIGGER_ON)
+                    if checkbox_text == "Radar" and cheat.RADAR_ON == True:
+                        cheat.RADAR_ON = False
+                        cheat.terminate_thread('radar')
+                        print(cheat.TRIGGER_ON)
+                    if checkbox_text == "Bunny" and cheat.BUNNY_ON == True:
+                        cheat.BUNNY_ON = False
+                        cheat.terminate_thread('bunny')
+                        print(cheat.TRIGGER_ON)
+                    if checkbox_text == "Anti Flash" and cheat.NFLASH_ON == True:
+                        cheat.NFLASH_ON = False
+                        cheat.terminate_thread('antiflash')
+                        print(cheat.TRIGGER_ON)
                     
         except Exception as e: 
             print(e)
