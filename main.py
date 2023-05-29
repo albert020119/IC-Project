@@ -18,12 +18,15 @@ class Cheat:
         self.logger.info("Connecting to process  %s", process_name)
         self.process = pymem.Pymem(process_name)
         self.thread_dict={}
-        self.stop_flag = threading.Event()  # Create an event object for stopping the thread
+        self.stop_flag = threading.Event()  
 
     def disconnect_from_process(self):
         self.logger.info("Disconnecting from process")
         # implementation
         #   
+    def terminate_allThreads (self):
+        for i in self.thread_dict:
+            self.thread_dict[i].set()
 
     def terminate_thread(self,string) :
         print(self.thread_dict[string])

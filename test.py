@@ -8,11 +8,22 @@ import customtkinter
 root = customtkinter.CTk()
 root.geometry("500x170")
 
-
-add_folder_image = ImageTk.PhotoImage(Image.open("settings.png").resize((30,30), Image.ANTIALIAS))
-
-
-button = customtkinter.CTkButton(master=root,image=add_folder_image,text="Bind",width=100,height=40,compound="left")
-button.pack(pady=20,padx=20)
+txt = "GAME IS RUNNING"
+count=0
+text=''
+label = customtkinter.CTkLabel(master=root, text=txt,fg_color="#454B1B")
+label.pack(pady=20)
+def slider():
+    global count,text 
+    if (count>=len("GAME IS RUNNING")):
+        count=-1
+        text=''
+        label.configure(text=text)
+    else:
+        text = text+ txt[count]
+        label.configure(text=text)
+    count+=1
+    label.after(100,slider)
+slider()
 
 root.mainloop()
