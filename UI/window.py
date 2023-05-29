@@ -179,11 +179,11 @@ def build_ui():
     add_attach_image = ImageTk.PhotoImage(Image.open("claw.png").resize((30,30), Image.ANTIALIAS))
     add_disconnect_image = ImageTk.PhotoImage(Image.open("disconnect.png").resize((30,30), Image.ANTIALIAS))
 
-    settingsButton = customtkinter.CTkButton(master=root,image=add_settings_image,text="Trigger Key",width=100,height=40,compound="left",command=clickedSettingsButton)
+    settingsButton = customtkinter.CTkButton(master=root,image=add_settings_image,text="Trigger Key",corner_radius=15,width=100,height=40,compound="left",command=clickedSettingsButton)
     settingsButton.pack(pady=10,padx=10)
-    attachButton = customtkinter.CTkButton(master=root,image=add_attach_image,text="ATTACH",width=100,height=40,compound="left",command=clickedAttachButton)
+    attachButton = customtkinter.CTkButton(master=root,image=add_attach_image,text="ATTACH",corner_radius=15,width=100,height=40,compound="left",command=clickedAttachButton)
     attachButton.pack(pady=10,padx=10)  
-    disconnectButton = customtkinter.CTkButton(master=root,image=add_disconnect_image,text="DETACH",width=100,height=40,compound="left",command=clickedDetachButton)
+    disconnectButton = customtkinter.CTkButton(master=root,image=add_disconnect_image,text="DETACH",corner_radius=15,width=100,height=40,compound="left",command=clickedDetachButton)
     disconnectButton.pack(pady=10,padx=10)
 
 
